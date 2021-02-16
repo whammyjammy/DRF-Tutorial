@@ -45,32 +45,3 @@ class SnippetDetail(
     
     def delete(self, request, *args, **kwargs):
         return self.destroy(request, *args, **kwargs)
-
-    
-
-
-
-# @api_view(['GET','PUT','DELETE'])
-# def snippet_detail(request, pk, format=None):
-#     """
-#     Retrieve, update or delete a code snippet.
-#     """
-#     try:
-#         snippet = Snippet.objects.get(pk=pk)
-#     except Snippet.DoesNotExist:
-#         return Response(status=404)
-
-#     if request.method == 'GET':
-#         serializer = SnippetSerializer(snippet)
-#         return Response(serializer.data, status=200)
-
-#     elif request.method == 'PUT':
-#         serializer = SnippetSerializer(snippet, data=request.data)
-#         if serializer.is_valid():
-#             serializer.save()
-#             return Response(serializer.data, status=200)
-#         return Response(serializer.errors, status=400)
-
-#     elif request.method == 'DELETE':
-#         snippet.delete()
-#         return Response(status=204)

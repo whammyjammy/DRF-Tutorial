@@ -115,8 +115,6 @@ class SnippetsDetailViewTestCase(APITestCase):
         url = reverse('snippet_detail', kwargs={'pk': snippet.pk})
 
         # when
-        # import ipdb; ipdb.set_trace()
-        # data['title'] = 'Changed Title'
         Snippet.objects.filter(title = 'Absolute best')
         response = self.client.put(url, data)
 
