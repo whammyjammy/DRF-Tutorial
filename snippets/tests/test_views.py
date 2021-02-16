@@ -111,18 +111,19 @@ class SnippetsDetailViewTestCase(APITestCase):
             'code': 'Print new',
             'linenos': True
         }
-        snippet = SnippetFactory.create()
+        snippet = SnippetFactory.create(**data)
         url = reverse('snippet_detail', kwargs={'pk': snippet.pk})
 
-        response = self.client.put(url, data)
-
         # when
-        data['title'] = 'Changed Title'
+        # import ipdb; ipdb.set_trace()
+        # data['title'] = 'Changed Title'
+        Snippet.objects.filter(title = 'Absolute best')
         response = self.client.put(url, data)
 
         # then
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json()['title'], data['title'])
+        self.assertTrue(Snippet.objects.filter(**data).exists())
 
     def test_put_returns_error(self):
         # when
